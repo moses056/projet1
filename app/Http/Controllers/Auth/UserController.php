@@ -56,7 +56,7 @@ class UserController extends Controller
         $userAuth = $request->user();
 
         $this->validate($request, [
-            'file' => 'required|image|mimes:jpeg,png,jpg|max:516',
+            'file' => 'required|image|mimes:jpeg,png,jpg|max:1024',
         ]);
 
         if ($userAuth && $request->hasFile('file')) {

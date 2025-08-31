@@ -4,10 +4,10 @@
       <div class="footer__description">
         <img src="/images/footer-logo.svg" alt="">
         <p v-if="$matchMedia.xl">
-          &copy; 2020
+          &copy; 2025
         </p>
         <p v-if="$matchMedia.xl">
-          Expanding Student’s Career by doing projects from their lecturer will give them a lot of benefits, our values is giving the same opportunity to all students who wants to get an experience working on project.
+          Expanding Etudiants Career by doing projects from their lecturer will give them a lot of benefits, our values is giving the same opportunity to all students who wants to get an experience working on project.
         </p>
       </div>
 
@@ -60,7 +60,7 @@
         </div>
 
         <p class="footer__copyright">
-          PHive, All Rights Reserved. | Created by FILKOM
+          Yako, All Rights Reserved. | Created by Moses
         </p>
       </div>
     </div>

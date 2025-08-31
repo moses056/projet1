@@ -99,7 +99,7 @@
         </p>
       </div>
       <div v-if="$matchMedia.xl" class="desktop-login__footer">
-        PHive, All Rights Reserved. &copy; 2021 . | Created by FILKOM
+        Yako, All Rights Reserved. &copy; 2025 . | Created by Moses
       </div>
     </div>
   </div>
@@ -166,31 +166,54 @@ export default {
 
   methods: {
     async login () {
-      const isLecturer = this.form.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(?!.*(student)).*.ac.id.*$/)
+      try {
+        console.log('Login method called with:', {
+          role: this.form.role,
+          email: this.form.email
+        });
 
-      if (this.form.role === 'Lecturer' && !isLecturer) {
-        this.snackbar.open('You are likely not using a lecturer identity.')
-        this.chooseStudent()
-        this.form.role = 'Student'
-        return
-      } else if (this.form.role === 'Student' && isLecturer) {
-        this.snackbar.open('You are likely using a lecturer identity. ')
-        this.chooseLecturer()
-        this.form.role = 'Lecturer'
-        return
+        // Désactivation de la validation email pour les lecturers
+        // const isLecturer = this.form.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(?!.*(student)).*.ac.id.*$/)
+
+        // if (this.form.role === 'Lecturer' && !isLecturer) {
+        //   this.snackbar.open('You are likely not using a lecturer identity.')
+        //   this.chooseStudent()
+        //   this.form.role = 'Student'
+        //   return
+        // } else if (this.form.role === 'Student' && isLecturer) {
+        //   this.snackbar.open('You are likely using a lecturer identity. ')
+        //   this.chooseLecturer()
+        //   this.form.role = 'Lecturer'
+        //   return
+        // }
+
+        console.log('Attempting login with API...');
+        const response = await this.form.post('/api/login');
+        console.log('Login response:', response.data);
+
+        this.$store.dispatch('auth/saveToken', {
+          token: response.data.token,
+          remember: this.remember
+        })
+        this.$router.back()
+      } catch (error) {
+        console.error('Login error:', error);
+        console.error('Error response:', error.response);
+        
+        if (error.response && error.response.data) {
+          const errorMessage = error.response.data.message || 'Login failed';
+          console.log('Error message:', errorMessage);
+          
+          // Vérifier si c'est le message spécifique
+          if (errorMessage.includes('lecturer identity')) {
+            console.log('Found lecturer identity error - this should not happen!');
+          }
+          
+          this.snackbar.open(errorMessage);
+        } else {
+          this.snackbar.open('An error occurred during login');
+        }
       }
-
-      this.form.post('/api/login')
-        .then(({ data }) => {
-          this.$store.dispatch('auth/saveToken', {
-            token: data.token,
-            remember: this.remember
-          })
-          this.$router.back()
-        })
-        .catch(e => {
-          // console.log(e.response.data.message)
-        })
     },
 
     chooseStudent () {

@@ -22,7 +22,7 @@
 
     <has-error :form="form2" field="file" />
     <p class="form-group__input-info mb-2">
-      Max avatar size is 516KB
+      Max avatar size is 1MB
     </p>
 
     <form @submit.prevent="saveProfile" @keydown="form.onKeydown($event)">

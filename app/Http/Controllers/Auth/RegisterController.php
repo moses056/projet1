@@ -30,7 +30,7 @@ class RegisterController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function registered(Request $request, User $user)
+     protected function registered(Request $request, User $user)
     {
         if ($user instanceof MustVerifyEmail) {
             return response()->json(['status' => trans('verification.sent')]);
@@ -47,25 +47,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        if ($data['role'] === 'Lecturer') {
-            return Validator::make($data, [
-                'first_name' => 'required|max:255',
-                'last_name' => 'max:255',
-                'role' => 'required|max:255|in:Student,Lecturer',
-                'email' => 'required|email|max:255|unique:users|regex:/^[a-zA-Z0-9.]+@(?!.*(student)).*.ac.id.*$/',
-                'password' => 'required|min:8',
-            ], [
-                'email.regex' => 'You were using student academic email address or not using an academic email at all.'
-            ]);
-        } else {
-            return Validator::make($data, [
-                'first_name' => 'required|max:255',
-                'last_name' => 'max:255',
-                'role' => 'required|max:255|in:Student,Lecturer',
-                'email' => 'required|email|max:255|unique:users',
-                'password' => 'required|min:8',
-            ]);
-        }
+        // Validation simplifiée - pas de restriction d'email pour les lecturers
+        return Validator::make($data, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'max:255',
+            'role' => 'required|max:255|in:Student,Lecturer',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:8',
+        ]);
     }
 
     /**
@@ -82,6 +71,7 @@ class RegisterController extends Controller
             'role' => $data['role'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            
         ]);
-    }
+    }  
 }
