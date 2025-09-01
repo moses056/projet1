@@ -67,10 +67,17 @@ class ProjectController extends Controller
             else if ($expertise === 'Data Expert') {$expertise = 'data_expert';}
 
             if ($user && $user->role === 'Student') {
-                $other_projects = Project::with(['user:id,tagname,first_name,last_name,photo_url,email', 'is_wished' =>
+                $query = Project::with(['user:id,tagname,first_name,last_name,photo_url,email', 'is_wished' =>
                     function ($q) use ($user) {
                         $q->where('wishlists.user_id', $user->id);
-                    }])->where('id', '!=', $project->id)->where($expertise, 1)->inRandomOrder()->take(3)->get();
+                    }])->where('id', '!=', $project->id);
+                
+                // Ajouter la condition expertise seulement si elle n'est pas vide
+                if (!empty($expertise)) {
+                    $query->where($expertise, 1);
+                }
+                
+                $other_projects = $query->inRandomOrder()->take(3)->get();
             } else {
                 $other_projects = Project::with(['user:id,tagname,first_name,last_name,photo_url,email'])->where('id', '!=', $project->id)->inRandomOrder()->take(3)->get();
             }

@@ -7,10 +7,10 @@
       <div class="slide-1__container">
         <div class="slide-1__first-block ">
           <h2 class="slide-1__heading moveInTop duration--1">
-            Expand <br>
-            Your Career <br>
-            by Doing <br>
-            Project.
+            Trouvez <br>
+            Votre Emploi <br>
+            en Afrique <br>
+            avec Yako.
           </h2>
           <div v-if="$matchMedia.xl" class="slide-1__ornament">
             <img class="slide-1__triangle fadeIn duration--2" src="/images/triangle.svg" alt="">
@@ -21,10 +21,10 @@
             <img class="slide-1__right-dashed moveInBottomLeft duration--2" src="/images/right-dashed.svg" alt="">
           </div>
           <p class="slide-1__paragraph moveInTop duration--1_5">
-            Fill up your college life with expectation
+            La plateforme qui connecte les talents africains aux opportunités
           </p>
           <router-link :to="{ name: 'explore' }" class="slide-1__button moveInTop duration--2" tag="button">
-            <span>Get Started</span>
+            <span>Commencer</span>
             <span class="iconify" data-icon="ion:arrow-forward-outline" />
           </router-link>
         </div>
@@ -45,13 +45,13 @@
       </div>
       <div class="slide-2__right">
         <h2 class="slide-2__heading">
-          See The <br>
-          Available <br>
-          Project on <br>
-          The Platform
+          Découvrez les <br>
+          Offres d'Emploi <br>
+          Disponibles sur <br>
+          la Plateforme
         </h2>
         <p class="slide-2__paragraph">
-          Knowing the available project that currently posted on the website and the finished project will determine your spirit!
+          Explorez les opportunités professionnelles disponibles et les missions terminées pour booster votre motivation !
         </p>
         <div class="slide-2__facts">
           <div class="slide-2__fact-item">
@@ -60,7 +60,7 @@
               {{ projectByStatusCount.hiring }}
             </div>
             <div class="slide-2__fact--name">
-              Active Projects
+              Offres Actives
             </div>
           </div>
           <div class="slide-2__fact-item">
@@ -69,7 +69,7 @@
               {{ projectByStatusCount.ongoing }}
             </div>
             <div class="slide-2__fact--name">
-              Ongoing Projects
+              Missions en Cours
             </div>
           </div>
           <div class="slide-2__fact-item">
@@ -78,7 +78,7 @@
               {{ projectByStatusCount.finished }}
             </div>
             <div class="slide-2__fact--name">
-              Finished Projects
+              Missions Terminées
             </div>
           </div>
         </div>
@@ -86,10 +86,10 @@
     </div>
     <div class="slide slide-3__container">
       <h2 class="slide-3__heading">
-        Leaderboard
+        Classement des Meilleurs
       </h2>
       <p class="slide-3__paragraph">
-        These are the highest achievers. Set them as examples, or beat their records. The choice is yours!
+        Voici les prestataires les plus performants. Prenez-les comme exemple ou dépassez leurs records. Le choix vous appartient !
       </p>
       <div v-if="!$matchMedia.xl">
         <TopBoardList :arrow="false" :data="topLeaderboards" />
@@ -98,7 +98,7 @@
         <TopBoardList :differ="false" :arrow="false" :show-all="true" :data="topLeaderboards" />
       </div>
       <router-link :to="{ name: 'leaderboard' }" class="btn btn--blue btn--large slide-3__button mt-1" tag="button">
-        See All Leaderboard
+        Voir tout le Classement
       </router-link>
     </div>
   </div>
@@ -117,9 +117,9 @@ export default {
 
   metaInfo () {
     return {
-      title: 'Home',
+      title: 'Accueil',
       meta: [
-        { name: 'description', content: 'PHive: Freelancer Platform for Students. Expand your career by doing projects.' }
+        { name: 'description', content: 'Yako: Plateforme d\'emploi pour l\'Afrique. Trouvez des opportunités professionnelles en toute sécurité.' }
       ]
     }
   },

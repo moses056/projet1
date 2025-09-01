@@ -7,7 +7,7 @@
           &copy; 2025
         </p>
         <p v-if="$matchMedia.xl">
-          Expanding Etudiants Career by doing projects from their lecturer will give them a lot of benefits, our values is giving the same opportunity to all students who wants to get an experience working on project.
+          Yako aide les jeunes Africains à trouver des opportunités professionnelles en connectant les talents avec les recruteurs. Notre mission est de donner les mêmes chances à tous les jeunes qui souhaitent acquérir une expérience professionnelle et développer leurs compétences.
         </p>
       </div>
 
@@ -22,26 +22,26 @@
                 </div>
               </div>
               <div v-if="$matchMedia.xl" class="footer-nav__menu--items">
-                <div>About Us</div>
-                <div>Careers</div>
-                <div>Contact Us</div>
+                <div>À Propos</div>
+                <div>Carrières</div>
+                <div>Contactez-nous</div>
               </div>
             </div>
             <div class="footer-nav__menu">
               <div class="flex-row space-between w-100">
-                <span>Further Information</span>
+                <span>Informations Supplémentaires</span>
                 <div v-show="!$matchMedia.xl">
                   <span class="iconify footer-nav__icon" data-icon="entypo:chevron-small-down" />
                 </div>
               </div>
               <div v-show="$matchMedia.xl" class="footer-nav__menu--items">
-                <div>Terms & Conditions</div>
-                <div>Privacy Policy</div>
+                <div>Conditions Générales</div>
+                <div>Politique de Confidentialité</div>
               </div>
             </div>
           </div>
           <div class="footer-icon__section">
-            <div>Connect with us</div>
+            <div>Suivez-nous</div>
             <div class="footer-icon__container">
               <div>
                 <span class="iconify footer-icon__item" data-icon="ant-design:instagram-outlined" />
@@ -60,7 +60,7 @@
         </div>
 
         <p class="footer__copyright">
-          Yako, All Rights Reserved. | Created by Moses
+          Yako, Tous droits réservés. | Plateforme d'emploi pour l'Afrique
         </p>
       </div>
     </div>

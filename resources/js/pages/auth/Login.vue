@@ -31,22 +31,22 @@
       </router-link>
 
       <h1 class="login--h1">
-        Who are you?
+        Qui êtes-vous ?
       </h1>
       <div class="login-role--container">
         <div>
           <input id="login-student" v-model="form.role" class="login-radio" type="radio" value="Student">
-          <label class="login-radio--label" for="login-student" @click="chooseStudent">Student</label>
+          <label class="login-radio--label" for="login-student" @click="chooseStudent">Prestataire</label>
         </div>
         <div>
           <input id="login-lecturer" v-model="form.role" class="login-radio" type="radio" value="Lecturer">
-          <label class="login-radio--label" for="login-lecturer" @click="chooseLecturer">Lecturer</label>
+          <label class="login-radio--label" for="login-lecturer" @click="chooseLecturer">Recruteur</label>
         </div>
       </div>
 
       <div v-if="!$matchMedia.xl" class="role--choose-effect" :class="{ 'role--student': studentRole, 'role--lecturer': lecturerRole }" />
       <div v-else class="separator mt-1_5 mb-2">
-        Sign In
+        Connexion
       </div>
 
       <form @submit.prevent="login" @keydown="form.onKeydown($event)">
@@ -59,7 +59,7 @@
         <!-- Password -->
         <div class="login-input--container">
           <div class="right-tag__group ">
-            <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="right-tag__input login--left-border" :type="passwordType" name="password" placeholder="Password" autocomplete="current-password" required>
+            <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="right-tag__input login--left-border" :type="passwordType" name="password" placeholder="Mot de passe" autocomplete="current-password" required>
             <div v-show="hidePassword" class="pointer right-tag" @click="togglePassword">
               <span class="iconify password__hide-icon" data-icon="carbon:view-off-filled" width="20" height="20" />
             </div>
@@ -72,7 +72,7 @@
 
         <!-- Remember Me -->
         <div class="login-input--container">
-          <label class="checkbox-container checkbox-container--post">Remember Me
+          <label class="checkbox-container checkbox-container--post">Se souvenir de moi
             <input v-model="remember" name="remember" type="checkbox">
             <span class="checkbox-checkmark checkbox-checkmark-remember" />
           </label>
@@ -81,25 +81,25 @@
         <div class="">
           <!-- Submit Button -->
           <v-button :loading="form.busy" class="login-submit--button" :class="{ 'is-lecturer': lecturerRole }">
-            Sign In
+            Se connecter
           </v-button>
         </div>
       </form>
       <div class="login-extra">
         <p>
-          Don't have an account?
+          Vous n'avez pas de compte ?
           <router-link :to="{ name: 'register' }" class="login-link">
-            <b>Sign Up</b>
+            <b>S'inscrire</b>
           </router-link>
         </p>
         <p>
           <router-link :to="{ name: 'password.request' }" class="login-link">
-            <b>Forgot Password?</b>
+            <b>Mot de passe oublié ?</b>
           </router-link>
         </p>
       </div>
       <div v-if="$matchMedia.xl" class="desktop-login__footer">
-        Yako, All Rights Reserved. &copy; 2025 . | Created by Moses
+        Yako, Tous droits réservés. &copy; 2024 . | Plateforme d'emploi pour l'Afrique
       </div>
     </div>
   </div>
@@ -114,7 +114,7 @@ export default {
   layout: 'wide',
   middleware: 'guest',
 
-  metaInfo () { return { title: 'Sign In' } },
+  metaInfo () { return { title: 'Connexion' } },
 
   data: () => ({
     studentRole: false,
@@ -146,7 +146,7 @@ export default {
           class: {
             midImage: ''
           },
-          text: 'Expand Your Careers.'
+          text: 'Trouvez des opportunités de travail.'
         }
       }
 
@@ -159,7 +159,7 @@ export default {
         class: {
           midImage: 'row-reverse'
         },
-        text: 'Project for Everyone'
+        text: 'Publiez des offres d\'emploi.'
       }
     }
   },
@@ -211,7 +211,7 @@ export default {
           
           this.snackbar.open(errorMessage);
         } else {
-          this.snackbar.open('An error occurred during login');
+          this.snackbar.open('Une erreur c\'est produite ');
         }
       }
     },

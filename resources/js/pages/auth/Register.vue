@@ -28,42 +28,42 @@
       </router-link>
 
       <h1 class="login--h1">
-        You are?
+        Vous êtes ?
       </h1>
       <div class="login-role--container">
         <div>
           <input id="login-student" v-model="form.role" class="login-radio" type="radio" value="Student" name="role">
-          <label class="login-radio--label" for="login-student" @click="chooseStudent">Student</label>
+          <label class="login-radio--label" for="login-student" @click="chooseStudent">Prestataire</label>
         </div>
         <div>
           <input id="login-lecturer" v-model="form.role" class="login-radio" type="radio" value="Lecturer" name="role">
-          <label class="login-radio--label" for="login-lecturer" @click="chooseLecturer">Lecturer</label>
+          <label class="login-radio--label" for="login-lecturer" @click="chooseLecturer">Recruteur</label>
         </div>
       </div>
 
       <div v-if="!$matchMedia.xl" class="role--choose-effect" :class="{ 'role--student': studentRole, 'role--lecturer': lecturerRole }" />
       <div v-else class="separator mt-1_5 mb-2">
-        Sign Up
+        Inscription
       </div>
 
       <form @submit.prevent="register" @keydown="form.onKeydown($event)">
         <div class="form__input--group">
           <div class="form-group__container">
             <h4 class="form-group__input-name">
-              First Name
+              Prénom
             </h4>
             <div class="">
-              <input v-model="form.first_name" :class="{ 'is-invalid': form.errors.has('first_name') }" class="form-group__input-text" type="text" name="first_name" placeholder="e.g., John" required>
+              <input v-model="form.first_name" :class="{ 'is-invalid': form.errors.has('first_name') }" class="form-group__input-text" type="text" name="first_name" placeholder="ex: Jean" required>
               <has-error :form="form" field="first_name" />
             </div>
           </div>
 
           <div class="form-group__container">
             <h4 class="form-group__input-name">
-              Last Name
+              Nom
             </h4>
             <div class="">
-              <input v-model="form.last_name" :class="{ 'is-invalid': form.errors.has('last_name') }" class="form-group__input-text" type="text" name="last_name" placeholder="e.g., Doe" required>
+              <input v-model="form.last_name" :class="{ 'is-invalid': form.errors.has('last_name') }" class="form-group__input-text" type="text" name="last_name" placeholder="ex: Dupont" required>
               <has-error :form="form" field="last_name" />
             </div>
           </div>
@@ -74,13 +74,13 @@
             Email
           </h4>
           <div class="">
-            <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-group__input-text" type="email" name="email" placeholder="e.g., johndoe@example.ac.id" autocomplete="username" required>
+            <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-group__input-text" type="email" name="email" placeholder="ex: jean.dupont@example.com" autocomplete="username" required>
             <p v-if="form.role === 'Student'" class="form-group__input-info">
-              You can use letters, numbers & periods
+              Vous pouvez utiliser des lettres, chiffres et points
             </p>
             <p v-else class="form-group__input-info form-input__info--email">
-              <span>You can use letters, numbers & periods.</span>
-              <span>Academic email address only.</span>
+              <span>Vous pouvez utiliser des lettres, chiffres et points.</span>
+              <span>Adresse email professionnelle recommandée.</span>
             </p>
             <has-error :form="form" field="email" />
           </div>
@@ -89,12 +89,12 @@
         <!-- Password -->
         <div class="form-group__container">
           <h4 class="form-group__input-name">
-            Password
+            Mot de passe
           </h4>
           <div class="">
             <div class="login-input--container">
               <div class="right-tag__group">
-                <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="right-tag__input right-tag__input--form" :type="passwordType" name="password" placeholder="e.g., th!51sjh0nD03N0tj@n3D03" autocomplete="current-password" required>
+                <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="right-tag__input right-tag__input--form" :type="passwordType" name="password" placeholder="ex: Mot2Passe!123" autocomplete="current-password" required>
                 <div v-show="hidePassword" class="pointer right-tag" @click="togglePassword">
                   <span class="iconify password__hide-icon" data-icon="carbon:view-off-filled" width="20" height="20" />
                 </div>
@@ -105,7 +105,7 @@
               <has-error :form="form" field="password" />
             </div>
             <p class="form-group__input-info">
-              Min. 8 characters with mix of letters, numbers & symbols
+              Minimum 8 caractères avec lettres, chiffres et symboles
             </p>
             <has-error :form="form" field="password" />
           </div>
@@ -114,21 +114,21 @@
         <div class="">
           <!-- Submit Button -->
           <v-button :loading="form.busy" class="login-submit--button" :class="{ 'is-lecturer': lecturerRole }">
-            Sign Up
+            S'inscrire
           </v-button>
         </div>
       </form>
 
       <div class="register-extra">
         <p>
-          Already had an account?
+          Vous avez déjà un compte ?
           <router-link :to="{ name: 'login' }" class="login-link">
-            <b>Sign In</b>
+            <b>Se connecter</b>
           </router-link>
         </p>
       </div>
       <div v-if="$matchMedia.xl" class="desktop-login__footer">
-        PHive, All Rights Reserved. &copy; 2021 . | Created by FILKOM
+        Yako, Tous droits réservés. &copy; 2024 . | Plateforme d'emploi pour l'Afrique
       </div>
     </div>
   </div>
@@ -143,7 +143,7 @@ export default {
   layout: 'wide',
   middleware: 'guest',
 
-  metaInfo () { return { title: 'Sign Up' } },
+  metaInfo () { return { title: 'Inscription' } },
 
   data: () => ({
     studentRole: false,
@@ -173,7 +173,7 @@ export default {
           class: {
             midImage: ''
           },
-          text: 'Expand Your Careers.'
+          text: 'Trouvez des opportunités de travail.'
         }
       }
 
@@ -186,7 +186,7 @@ export default {
         class: {
           midImage: 'row-reverse'
         },
-        text: 'Project for Everyone'
+        text: 'Publiez des offres d\'emploi.'
       }
     },
 

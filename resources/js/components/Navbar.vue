@@ -36,11 +36,11 @@
                   </div>
                   <div class="nav-separator" />
                   <router-link :to="{ name: 'settings' }">
-                    Settings
+                    Paramètres
                   </router-link>
                   <div class="nav-separator" />
                   <button class="btn--clear btn-text--decline" @click="logout">
-                    Logout
+                    Déconnexion
                   </button>
                 </div>
               </div>
@@ -51,11 +51,11 @@
         <div v-if="!user">
           <div class="desktop-nav__right-container">
             <router-link :to="{ name: 'register' }" class="btn btn--link" tag="button">
-              Create an Account
+              Créer un Compte
             </router-link>
 
             <router-link :to="{ name: 'login' }" class="btn btn--border btn--sign-in" tag="button">
-              Sign In
+              Se Connecter
             </router-link>
           </div>
         </div>
@@ -119,13 +119,13 @@
               </div>
             </div>
             <router-link :to="{ name: 'profile.projects' }" class="nav--profile-link" active-class="nav--profile-link-active">
-              View Profile
+              Voir le Profil
             </router-link>
           </div>
           <div v-else class="nav--profile-guest">
             <img class="nav--profile-img" :src="photoUrl" alt="">
             <p class="nav__profile--guest-desc">
-              No Account Signed
+              Aucun Compte Connecté
             </p>
           </div>
 
@@ -154,13 +154,13 @@
             <div class="nav-group">
               <router-link :to="{ name: 'settings' }" class="nav-link" active-class="nav--active-link">
                 <span class="iconify" data-icon="eva:settings-fill" />
-                <span>Settings</span>
+                <span>Paramètres</span>
               </router-link>
 
               <div class="dropdown-divider" />
 
               <button class="btn btn--decline mt-3" @click="logout">
-                Logout
+                Déconnexion
               </button>
             </div>
           </div>
@@ -168,11 +168,11 @@
           <div v-show="!user">
             <div class="nav-group mt-3">
               <router-link :to="{ name: 'login' }" class="btn btn--blue " tag="button">
-                Sign In
+                Se Connecter
               </router-link>
 
               <router-link :to="{ name: 'register' }" class="btn btn--white mt-1_5" tag="button">
-                Create an Account
+                Créer un Compte
               </router-link>
             </div>
           </div>
@@ -187,7 +187,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   data: () => ({
-    appName: 'PHive',
+    appName: 'Yako',
     menu: { show: false, hide: false },
     photoUrl: 'https://www.gravatar.com/avatar/67104dea1ce9aef46682a4d8d145588c.jpg?s=200&d=mm',
     dropdown: { state: false, timeout: '' }
@@ -217,8 +217,8 @@ export default {
 
     leftMenu () {
       return [
-        { route: { name: 'explore' }, text: 'Explore', icon: 'eva:globe-2-fill' },
-        { route: { name: 'leaderboard' }, text: 'Leaderboard', icon: 'gridicons:stats-up-alt' }
+        { route: { name: 'explore' }, text: 'Explorer', icon: 'eva:globe-2-fill' },
+        { route: { name: 'leaderboard' }, text: 'Classement', icon: 'gridicons:stats-up-alt' }
       ]
     },
 
@@ -226,22 +226,22 @@ export default {
       if (this.user) {
         if (this.user.role === 'Lecturer') {
           return [
-            { route: { name: 'project.post' }, text: 'Post Project', icon: 'ic:baseline-post-add' },
-            { route: { name: 'inbox' }, text: 'Inbox', icon: 'ion:mail-unread-sharp' },
-            { route: { name: 'projectbox' }, text: 'Project Box', icon: 'simple-icons:polymerproject' }
+            { route: { name: 'project.post' }, text: 'Publier une Offre', icon: 'ic:baseline-post-add' },
+            { route: { name: 'inbox' }, text: 'Messages', icon: 'ion:mail-unread-sharp' },
+            { route: { name: 'projectbox' }, text: 'Mes Offres', icon: 'simple-icons:polymerproject' }
           ]
         }
 
         return [
-          { route: { name: 'party.leader' }, text: 'Party', icon: 'carbon:3rd-party-connected' },
-          { route: { name: 'inbox' }, text: 'Inbox', icon: 'ion:mail-unread-sharp' },
-          { route: { name: 'projectbox' }, text: 'Project Box', icon: 'simple-icons:polymerproject' }
+          { route: { name: 'party.leader' }, text: 'Équipe', icon: 'carbon:3rd-party-connected' },
+          { route: { name: 'inbox' }, text: 'Messages', icon: 'ion:mail-unread-sharp' },
+          { route: { name: 'projectbox' }, text: 'Mes Missions', icon: 'simple-icons:polymerproject' }
         ]
       }
 
       return [
-        { route: { name: 'login' }, text: 'Sign In', icon: 'ic:baseline-post-add', class: '' },
-        { route: { name: 'register' }, text: 'Create an Account', icon: 'ion:mail-unread-sharp', class: '' }
+        { route: { name: 'login' }, text: 'Se Connecter', icon: 'ic:baseline-post-add', class: '' },
+        { route: { name: 'register' }, text: 'Créer un Compte', icon: 'ion:mail-unread-sharp', class: '' }
       ]
     }
   },

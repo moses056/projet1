@@ -2,7 +2,7 @@
   <div class="explore--container">
     <div class="explore__top--container">
       <h1 class="explore__top--h1">
-        Explore for Your Projects
+        Explorez les Offres d'Emploi
       </h1>
 
       <div class="explore__search--container">
@@ -10,30 +10,30 @@
           <input
             v-if="$matchMedia.xl" v-model="query" type="search"
             class="form-tag__input"
-            placeholder="Search by Project Titles"
+            placeholder="Rechercher par titre d'offre"
             @keyup.enter="search"
           >
           <input
             v-else v-model="query" type="search"
             class="form-tag__input"
-            placeholder="Explore by projects" @change="search"
+            placeholder="Rechercher des offres" @change="search"
           >
           <label for="form.user.tagname" class="form-tag"><span class="iconify" data-icon="ic:round-search" width="30" height="30" /></label>
         </div>
         <button v-if="$matchMedia.xl" v-debounce:600ms="search" :debounce-events="'click'" class="btn explore__search--button ml-1" :disabled="query.length === 0">
-          Explore
+          Rechercher
         </button>
       </div>
     </div>
 
     <div class="explore__main--container">
       <h2 class="explore__main--h2">
-        Available Projects
+        Offres d'Emploi Disponibles
       </h2>
       <button class="btn--clear flex-center" @click="toggleFilter">
         <div class="icon">
           <span class="iconify" data-icon="ic:round-filter-list" height="24" width="24" />
-          <span v-if="$matchMedia.xl">Filters</span>
+          <span v-if="$matchMedia.xl">Filtres</span>
         </div>
       </button>
     </div>
@@ -41,7 +41,7 @@
     <Modal v-if="!$matchMedia.xl" ref="filtersModal" :type="`small`">
       <template v-slot:header>
         <h4 class="post__modal--h4 my-0">
-          Filters
+          Filtres
         </h4>
       </template>
 
@@ -51,7 +51,7 @@
         <div class="select select--small select--border mb-2">
           <select v-model="filters.selected.status" @change="filterProjects">
             <option disabled value="">
-              Status Project:
+              Statut de l'offre:
             </option>
             <option v-for="status in filters.statuses" :key="`SelectStatus-${status.name}`">
               {{ status.name }}
@@ -71,7 +71,7 @@
         <div class="select select--small select--border mt-2">
           <select v-model="filters.selected.reward" @change="filterProjects">
             <option disabled value="">
-              Rewards:
+              Rémunération:
             </option>
             <option v-for="reward in filters.rewards" :key="`SelectRewards-${reward.name}`">
               {{ reward.name }}
@@ -83,7 +83,7 @@
 
       <template v-slot:footer>
         <button class="btn btn--clear mx-auto" @click="clearFilter">
-          Clear Filter
+          Effacer les filtres
         </button>
       </template>
     </Modal>
@@ -93,7 +93,7 @@
         <div class="select select--small select--border">
           <select v-model="filters.selected.status" @change="filterProjects">
             <option disabled value="">
-              Status Project:
+              Statut de l'offre:
             </option>
             <option v-for="status in filters.statuses" :key="`SelectStatus-${status.name}`">
               {{ status.name }}
@@ -110,7 +110,7 @@
         <div class="select select--small select--border">
           <select v-model="filters.selected.reward" @change="filterProjects">
             <option disabled value="">
-              Rewards:
+              Rémunération:
             </option>
             <option v-for="reward in filters.rewards" :key="`SelectRewards-${reward.name}`">
               {{ reward.name }}
@@ -135,12 +135,12 @@
       </template>
       <ProjectCard v-for="(project) in projects" :key="`ProjectCard-${project.id}`" :data="project" />
       <p v-if="!loading && projects.length === 0" class="info__p">
-        There are no projects with these criteria
+        Aucune offre ne correspond à ces critères
       </p>
     </div>
 
     <button v-if="canLoadMore && projects.length !== 0" class="btn btn--blue btn__load-more" @click="loadMore">
-      <span>Load More</span><span v-if="$matchMedia.xl">Projects</span>
+      <span>Charger plus</span><span v-if="$matchMedia.xl">d'offres</span>
     </button>
   </div>
 </template>
@@ -156,9 +156,9 @@ export default {
 
   metaInfo () {
     return {
-      title: 'Explore',
+      title: 'Explorer',
       meta: [
-        { name: 'description', content: 'PHive Explore: Search the latest posted projects for you to apply or peek up the best projects that have been finished.' }
+        { name: 'description', content: 'Yako Explorer: Recherchez les dernières offres d\'emploi pour postuler ou découvrez les meilleures opportunités professionnelles.' }
       ]
     }
   },
